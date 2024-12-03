@@ -7,10 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ModalExample: typeof import('./../playground/app/components/ModalExample.vue')['default']
-    Placeholder: typeof import('./../playground/app/components/Placeholder.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SlideoverExample: typeof import('./../playground/app/components/SlideoverExample.vue')['default']
   }
 }
