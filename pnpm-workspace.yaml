@@ -1,0 +1,5 @@
+packages:
+  - "./"
+  - "docs"
+  - "playground"
+  - "playground-vue"
