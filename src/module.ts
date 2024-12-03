@@ -1,1 +1,1 @@
-//TODO: Logic for creating the Nuxt Module
+// TODO: Logic for creating the Nuxt Module
