@@ -9,6 +9,40 @@
   },
   "type": "module",
   "license": "MIT",
+
+  "exports": {
+    ".": {
+      "types": "./dist/module.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs",
+      "style": "./dist/runtime/index.css"
+    },
+    "./unplugin": {
+      "types": "./dist/unplugin.d.ts",
+      "import": "./dist/unplugin.mjs",
+      "require": "./dist/unplugin.cjs"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.mjs",
+      "require": "./dist/vite.cjs"
+    },
+    "./vue-plugin": {
+      "types": "./vue-plugin.d.ts"
+    },
+    "./runtime/*": "./dist/runtime/*",
+    "./locale": {
+      "types": "./dist/runtime/locale/index.d.ts",
+      "import": "./dist/runtime/locale/index.js"
+    }
+  },
+  "imports": {
+    "#build/bootvue/*": "./.nuxt/bootvue/*.ts"
+  },
+  "style": "./dist/runtime/index.css",
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+
   "scripts": {
     "build": "nuxt-module-build build", 
     "prepack": "pnpm build",
@@ -16,7 +50,7 @@
     "dev": "nuxi dev playground",
     "dev:vue": "pnpm --filter playground-vue dev",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground && nuxi prepare docs && vite build playground-vue",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground  && nuxi prepare docs && pnpm --filter playground-vue prepare" ,
     
     "docs": "nuxi dev docs",
     "docs:build": "nuxi build docs",
