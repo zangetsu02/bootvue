@@ -1,7 +1,9 @@
 import { createApp, defineAsyncComponent, ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import uiPlugin from 'bootvue/vue-plugin'
 
 import App from './app.vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const pages = import.meta.glob('../../playground/app/pages/**/*.vue')
 const components = import.meta.glob('../../playground/app/components/**/*.vue')
@@ -27,6 +29,7 @@ Object.entries(components).forEach(([path, component]) => {
 })
 
 app.use(router)
+app.use(uiPlugin)
 
 // @ts-expect-error unknown global property
 globalThis.useFetch = async (url: string, options: RequestInit & { transform?: (data) => any } = {}) => {

@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImports from 'unplugin-auto-import/vite'
 import VueComponents from 'unplugin-vue-components'
 
-// import bootvue from '../src/vite'
+import bootvue from '../src/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +14,8 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    // bootvue(),
+    // FIXME: default config for the plugin
+    bootvue({ prefix: 'B' }),
     // these are required as we share the component pages with the Nuxt playground
     AutoImports({ imports: ['vue'] }),
     VueComponents.vite({
