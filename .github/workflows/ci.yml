@@ -1,0 +1,50 @@
+name: Deploy to npm
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: 
+        image: node:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Prepare
+        run: pnpm run dev:prepare
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Test (vue)
+        run: pnpm run test:vue
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Build vue fixture
+        run: pnpm run test:vue:build
+
+      - name: Publish
+        run: pnpx pkg-pr-new publish --compact --no-template --pnpm
+
