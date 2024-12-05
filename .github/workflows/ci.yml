@@ -20,6 +20,13 @@ jobs:
       NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
 
     steps:
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+          registry-url: "https://registry.npmjs.org"
+
       - name: Checkout
         uses: actions/checkout@v4
 
