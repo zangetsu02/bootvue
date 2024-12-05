@@ -8,7 +8,7 @@ import { runtimeDir, type BootVueOptions } from '../unplugin'
 /**
  * This plugin adds all the Bootvue components as auto-imports.
  */
-export default function ComponentImportPlugin(framework: UnpluginContextMeta['framework'], options: BootVueOptions & { prefix: NonNullable<BootVueOptions['prefix']> }) {
+export default function ComponentImportPlugin(framework: UnpluginContextMeta['framework'], options: BootVueOptions & { prefix?: string }) {
   const components = globSync('**/*.vue', { cwd: join(runtimeDir, 'components') })
   const componentNames = new Set(components.map(c => `${options.prefix}${c.replace(/\.vue$/, '')}`))
 

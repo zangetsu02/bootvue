@@ -13,8 +13,7 @@
     ".": {
       "types": "./dist/module.d.ts",
       "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs",
-      "style": "./dist/runtime/index.css"
+      "require": "./dist/module.cjs"
     },
     "./unplugin": {
       "types": "./dist/unplugin.d.ts",
@@ -26,19 +25,11 @@
       "import": "./dist/vite.mjs",
       "require": "./dist/vite.cjs"
     },
-    "./vue-plugin": {
-      "types": "./vue-plugin.d.ts"
-    },
-    "./runtime/*": "./dist/runtime/*",
-    "./locale": {
-      "types": "./dist/runtime/locale/index.d.ts",
-      "import": "./dist/runtime/locale/index.js"
-    }
+    "./runtime/*": "./dist/runtime/*"
   },
   "imports": {
     "#build/bootvue/*": "./.nuxt/bootvue/*.ts"
   },
-  "style": "./dist/runtime/index.css",
   "main": "./dist/module.cjs",
   "types": "./dist/types.d.ts",
   "files": [

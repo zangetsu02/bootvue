@@ -10,7 +10,9 @@ import PluginsPlugin from './plugins/plugins'
 
 export const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
-type AppConfig = Record<string, any>
+type AppConfig = {
+  prefix: string
+}
 
 export interface BootVueOptions {
   /** Whether to generate declaration files for auto-imported components. */
