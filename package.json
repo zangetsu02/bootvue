@@ -1,7 +1,7 @@
 {
   "name": "bootvue",
   "description": "Vue Bootstrap components",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "packageManager": "pnpm@9.14.4",
   "repository": {
     "type": "git",
@@ -40,19 +40,16 @@
     "dist",
     "vue-plugin.d.ts"
   ],
-
   "scripts": {
-    "build": "nuxt-module-build build", 
+    "build": "nuxt-module-build build",
     "prepack": "pnpm build",
-
     "dev": "nuxi dev playground",
     "dev:vue": "pnpm --filter playground-vue dev",
     "dev:build": "nuxi build playground",
-"dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground && nuxi prepare docs && nuxi prepare devtools  && vite build playground-vue",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground && nuxi prepare docs && nuxi prepare devtools  && vite build playground-vue",
     "docs": "nuxi dev docs",
     "docs:build": "nuxi build docs",
     "docs:prepare": "nuxt-component-meta docs",
-    
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "vue-tsc --noEmit && nuxi typecheck playground && nuxi typecheck docs && cd playground-vue && vue-tsc --noEmit",
