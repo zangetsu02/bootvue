@@ -50,5 +50,7 @@ jobs:
         run: pnpm run test:vue:build
 
       - name: Publish
-        run: pnpx pkg-pr-new publish --compact --no-template --pnpm
+        run: pnpx pkg-pr-new publish --compact --no-template --pnpm && pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
