@@ -8,15 +8,16 @@ on:
     branches:
       - master
 
-
 jobs:
   ci:
     runs-on: ubuntu-latest
-    container: 
-        image: node:latest
+    container:
+      image: node:latest
 
     env:
-      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
 
     steps:
       - name: Checkout
@@ -28,29 +29,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Prepare
+      - name: Prepare environment
         run: pnpm run dev:prepare
 
-      - name: Lint
+      - name: Run linter
         run: pnpm run lint
 
-      # - name: Typecheck
-      #   run: pnpm run typecheck
+      - name: Typecheck
+        run: pnpm run typecheck
 
-      # - name: Test
+      # - name: Run tests
       #   run: pnpm run test
 
-      # - name: Test (vue)
+      # - name: Build Vue fixture tests
       #   run: pnpm run test:vue
 
-      - name: Build
+      - name: Build project
         run: pnpm run build
 
-      - name: Build vue fixture
+      - name: Build Vue fixture
         run: pnpm run test:vue:build
 
-      - name: Publish
+      - name: Publish to npm
         run: pnpx pkg-pr-new publish --compact --no-template --pnpm && pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
