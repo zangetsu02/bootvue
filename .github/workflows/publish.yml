@@ -1,0 +1,27 @@
+name: Publish to NPM
+
+on:
+  release: 
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Publish to NPM
+        run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
