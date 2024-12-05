@@ -20,6 +20,9 @@
       "import": "./dist/unplugin.mjs",
       "require": "./dist/unplugin.cjs"
     },
+    "./vue-plugin": {
+      "types": "./vue-plugin.d.ts"
+    },
     "./vite": {
       "types": "./dist/vite.d.ts",
       "import": "./dist/vite.mjs",
@@ -70,6 +73,7 @@
     "unplugin": "^1.16.0",
     "unplugin-auto-import": "^0.18.6",
     "unplugin-vue-components": "^0.27.5",
+    "defu": "^6.1.4",
     "pathe": "^1.1.2",
     "mlly": "^1.7.3",
     "magic-string": "^0.30.14",

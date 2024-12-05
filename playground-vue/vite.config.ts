@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [
     vue(),
     // FIXME: default config for the plugin
-    bootvue({ prefix: 'B' }),
+    bootvue({}),
     // these are required as we share the component pages with the Nuxt playground
     AutoImports({ imports: ['vue'] }),
     VueComponents.vite({

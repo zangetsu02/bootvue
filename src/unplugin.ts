@@ -7,6 +7,9 @@ import AutoImport from 'unplugin-auto-import'
 import ComponentImportPlugin from './plugins/components'
 import NuxtEnvironmentPlugin from './plugins/nuxt-environment'
 import PluginsPlugin from './plugins/plugins'
+import AppConfigPlugin from './plugins/app-config'
+import { defaultOptions } from './defaults'
+import defu from 'defu'
 
 export const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
@@ -21,10 +24,13 @@ export interface BootVueOptions {
 }
 
 export const BootVuePlugin = createUnplugin<BootVueOptions>((options, meta) => {
+  const appConfig = defu({ bootvue: options.bootvue }, { ui: defaultOptions })
+
   return [
     NuxtEnvironmentPlugin(),
     ...ComponentImportPlugin(meta.framework, options),
     AutoImport[meta.framework]({ dts: options.dts ?? true, dirs: [join(runtimeDir, 'composables')] }),
-    PluginsPlugin(options)
+    PluginsPlugin(options),
+    AppConfigPlugin(options, appConfig)
   ]
 })
