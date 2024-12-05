@@ -5,7 +5,7 @@
   "packageManager": "pnpm@9.14.4",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zangetsu002/bootvue.git"
+    "url": "git+https://github.com/zangetsu02/bootvue.git"
   },
   "type": "module",
   "license": "MIT",

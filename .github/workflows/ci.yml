@@ -10,10 +10,14 @@ on:
 
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
     container: 
         image: node:latest
+
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
